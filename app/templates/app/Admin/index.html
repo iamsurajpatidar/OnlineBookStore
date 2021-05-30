@@ -1,0 +1,84 @@
+{% extends "app/Admin/base1.html" %}
+{% block content %}
+{% load static %}
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="{% url 'Catindex' %}" class="btn btn-primary btn-block" >
+            <i class="fas fa-plus"></i> Add Category
+          </a>
+          <div>
+            {% if masg %}	
+					<strong><p style="color: red;">{{masg}}</p></strong>
+			      {% endif %}
+			
+          </div>
+        
+        </div>
+        <div class="col-md-3">
+          <a href="{% url 'SubCategory' %}" class="btn btn-success btn-block" >
+            <i class="fas fa-plus"></i> Sub Category
+          </a>
+          <div>
+            {% if msg %}	
+					<strong><p style="color: red;">{{msg}}</p></strong>
+			      {% endif %}
+			
+          </div>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+            <i class="fas fa-plus"></i> Add User
+          </a>
+         
+         
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9" id="postParent">
+          
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center bg-primary text-white mb-3">
+            <div class="card-body">
+              <h3>All Category</h3>
+              <!-- Added ID for JS -->
+              <h4 class="display-4" id="postCount">
+                <i class="fas fa-pencil-alt"></i>
+              </h4>
+              <a href="{% url 'showall' %}" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+
+          </div>
+          <div class="card text-center bg-success text-white mb-3">
+            <div class="card-body">
+              <h3>All Sub Categories</h3>
+              <h4 class="display-4">
+                <i class="fas fa-folder"></i> 4
+              </h4>
+              <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+          </div>
+          <div class="card text-center bg-warning text-white mb-3">
+            <div class="card-body">
+              <h3>Users</h3>
+              <h4 class="display-4">
+                <i class="fas fa-users"></i> 4
+              </h4>
+              <a href="users.html" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

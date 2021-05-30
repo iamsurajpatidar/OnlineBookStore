@@ -1,0 +1,97 @@
+
+{% extends "app/Customer/cBase.html" %}
+{% block content %}
+{% load static %}
+  
+
+  <!-- ACTIONS -->
+  <section  class="py-4 mb-4 bg-light" style="background-color: mediumblue;">
+    <div class="container">
+      <div class="row" >
+        <div class="col-md-3">
+          <a href="www.google.com" class="btn btn-primary btn-block"  data-target="#addPostModal" style="color: rgb(8, 8, 8); background-color: lightskyblue;">
+            <i class="fas fa-plus"></i> Plus Membership
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-warning btn-block"  data-target="#addUserModal" style="color: rgb(8, 8, 8); background-color: lightskyblue;">
+            <i class="fas fa-plus"></i> My Orders
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-success btn-block"  data-target="#addCategoryModal" style="color: rgb(8, 8, 8); background-color: lightskyblue;">
+            <i class="fas fa-plus"></i> Book Pay Later
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-warning btn-block"  data-target="#addUserModal" style="color: rgb(8, 8, 8); background-color: lightskyblue;">
+            <i class="fas fa-plus"></i> My Cards & Wallet
+          </a>
+        </div>
+        
+        
+      </div>
+    </div>
+  </section>
+  <section style="margin-top: -2%;" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="#" class="btn btn-primary btn-block" data-target="#addPostModal" style="color: rgb(8, 8, 8); background-color: lightskyblue;">
+            <i class="fas fa-plus"></i> My Questions & Answers
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-success btn-block"  data-target="#addCategoryModal" style="color: rgb(8, 8, 8); background-color: lightskyblue;">
+            <i class="fas fa-plus"></i> My Addresses
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-warning btn-block"  data-target="#addUserModal" style="color: rgb(8, 8, 8); background-color: lightskyblue;">
+            <i class="fas fa-plus"></i> My Reviews
+          </a>
+        </div>
+        <!-- <div class="col-md-3">
+          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+            <i class="fas fa-plus"></i> Add User
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+            <i class="fas fa-plus"></i> Add User
+          </a>
+        </div> -->
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- <section id="actions" style="margin-top: 20%;">
+    
+  </section> -->
+  
+  
+  <section style="margin-top: 20%;" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="#"  data-target="#addPostModal">Account Settings
+          </a>
+          /<a href=""   data-target="#addPostModal"> Logout  WebSite 
+          </a>
+        </div>
+        <!-- <div class="col-md-3">
+          <a href="#"   data-target="#addUserModal">
+            Logout  WebSite 
+          </a>
+        </div> -->
+        
+       
+        
+      </div>
+    </div>
+  </section>
+
+ 
+  
+  {% endblock %}

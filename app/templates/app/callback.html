@@ -1,0 +1,79 @@
+{% extends "app/base.html" %}
+{% block content %}
+{% load static %}
+<div style="margin-top: 10%;">
+
+
+<!DOCTYPE html>
+<head>
+    <title>Callback</title>
+</head>
+<body >
+    
+    
+   
+
+    <table style="margin-left: 20%;">
+        <h3 style="margin-left: 20%;"> Checksum Verification: {{ message }} </h3> <br>
+        <h2 style="margin-left: 20%; color: blue;">Oder succussfully Placed </h2>
+        <tr>
+            <td><h4 > TXNID:</h4></td>
+            <td><h5>{{ TXNID }}</h5></td>
+            </tr>
+            <tr>
+                <td><h4>ORDERID:</h4></td>
+                <td><h5>{{ ORDERID }} </h5></td>
+                </tr>
+                <tr>
+                    <td><h4>BANKTXNID:</h4></td>
+                    <td><h5>{{ BANKTXNID }} </h5></td>
+                    </tr>
+                    <tr>
+                        <td><h4>TXNAMOUNT:</h4></td>
+                        <td><h5>{{ TXNAMOUNT }} </h5></td>
+                        </tr>
+                        <tr>
+                            <td><h4>STATUS:</h4></td>
+                            <td><h5>{{ STATUS }}</h5></td>
+                        </tr>
+                        <tr>
+                            <td><h4>TXNDATE:</h4></td>
+                        <td><h5> {{ TXNDATE }}</h5></td>
+                        </tr>
+                        
+    </table>
+    
+    <!-- MID:  -->
+    <input type="hidden" value="{{ MID }}"><br>
+    
+    <!-- CURRENCY:  -->
+    <input type="hidden" value="{{ CURRENCY }}">                        <br>
+    
+    <!-- RESPCODE:  -->
+    <input type="hidden" value="{{ RESPCODE }} ">                       <br>
+    <!-- RESPMSG:  -->
+    <input type="hidden" value="{{ RESPMSG }}  ">                        <br>
+                              
+    <!-- GATEWAYNAME:  -->
+    <input type="hidden" value="{{ GATEWAYNAME }} ">                 <br>
+    <!-- BANKNAME:  -->
+    <input type="hidden" value="{{ BANKNAME }}  ">                      <br>
+    <!-- BIN_NAME:  -->
+    <input type="hidden" value="{{ BIN_NAME }} ">                       <br>
+    <!-- PAYMENTMODE:  -->
+    <input type="hidden" value="{{ PAYMENTMODE }}">                  <br>
+    <!-- CHECKSUMHASH:  -->
+    <input type="hidden" value="{{ CHECKSUMHASH }}"><br>
+    <br>
+    <br>
+    <div class="wc-proceed-to-checkout text-center">
+        <a href="{% url 'index' %}" class="checkout-button button alt wc-forward">
+           <center> <i class="fa fa-check-circle"></i>Go Back To Home Page</center>
+        </a>
+    </div>
+
+</body>
+</html>
+
+</div>
+{% endblock %}

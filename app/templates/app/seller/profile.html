@@ -1,0 +1,119 @@
+{% extends "app/seller/base1.html" %}
+{% block content %}
+{% load static %}
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fas fa-user"></i> Edit Profile</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="{% url 'sellerindex' %}" class="btn btn-light btn-block">
+            <i class="fas fa-arrow-left"></i> Back To Dashboard
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-success btn-block">
+            <i class="fas fa-lock"></i> Change Password
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-danger btn-block">
+            <i class="fas fa-trash"></i> Delete Account
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% if key1 %}
+  <!-- PROFILE -->
+  <section id="profile">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card" style="width: 70%; ">
+            <div class="card-header" style="width: 100%;"> 
+              <h4>Edit Profile</h4>
+            </div>
+            <div class="card-body" >
+              <form  action="{% url 'sellerupdate' pk=request.session.id %}" method="POST" style="width: 100%; height: 50%;" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="name">FirstName</label>
+                  <input type="text" class="form-control" name="fname" required="required" value="{{key1.Firstname}}">
+                </div>
+                <div class="form-group">
+                  <label for="name">LastName</label>
+                  <input type="text" class="form-control" name="lname" required="required" value="{{key1.Lastname}}">
+                </div>
+               
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" name="email" required="required" value="{{key1.user_id.Email}}">
+                </div>
+                <div class="form-group">
+                  <label for="name">Contact</label>
+                  <input type="text" class="form-control" name="contact" value="{{key1.Contact}}">
+                </div>
+                <div class="form-group">
+                  <label for="name">Gender</label>
+                  <select name="gender" id="" class="form-control">
+                    {% if key1.Gender %}
+                    <option selected disabled="True">{{key1.Gender}}</option>
+                    {% endif %}
+                      <option >---------------Select Gender--------------</option>
+                      <option >Male</option>
+                      <option >Female</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="name">ShopName</label>
+                <input type="text" class="form-control" name="shopname" value="{{key1.Shopname}}">
+              </div>
+              <div class="form-group">
+                <label for="name">BusinessType</label>
+                <input type="text" class="form-control" name="bustype" value="{{key1.Businesstype}}">
+              </div>
+              <div class="form-group">
+                <label for="name">City</label>
+                <input type="text" class="form-control" name="city" value="{{key1.City}}">
+              </div>
+              <div class="form-group">
+                <label for="name">State</label>
+                <input type="text" class="form-control" name="state" value="{{key1.State}}">
+              </div>
+              <div class="form-group">
+                <label for="name">Address</label>
+                <input type="text" class="form-control" name="address" value="{{key1.Address}}">
+              </div>
+              <div class="form-group">
+                <label for="name">Upload Profile</label>
+                <input type="file" class="form-control" name="img" >
+              </div>
+                <div class="col-md-3">
+                  <button class="btn btn-success btn-block" type="submit"><i class="fas fa-check"> Save</i>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h3>Your Avatar</h3>
+          <img src="{{MEDIA_URL}}{{key1.Profile_pic.url}}" alt="avatar" class="d-block img-fluid mb-3">
+         
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+{% endblock %}

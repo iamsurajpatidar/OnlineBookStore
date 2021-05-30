@@ -1,0 +1,136 @@
+{% extends "app/base.html" %}
+{% block content %}
+{% load static %}
+
+		{% if data %}
+
+        <!-- Start Bradcaump area -->
+        <div class="ht__bradcaump__area bg-image--4" style="background-image: url('{% static 'app/images/banner.jpg' %} ');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bradcaump__inner text-center">
+                        	<h2 class="bradcaump-title">Shop Single</h2>
+                            <nav class="bradcaump-content">
+                              <a class="breadcrumb_item" href="index.html">Home</a>
+                              <span class="brd-separetor">/</span>
+                              <span class="breadcrumb_item active">Shop Single</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <!-- Start main Content -->
+		<form action="{% url 'updatecart' pk=data.id %}" method="POST">
+			{% csrf_token %}
+        <div class="maincontent bg--white pt--80 pb--55">
+        	<div class="container">
+        		<div class="row">
+        			<div class="col-lg-9 col-12">
+        				<div class="wn__single__product">
+        					<div class="row">
+        						<div class="col-lg-6 col-12">
+        							<div class="wn__fotorama__wrapper">
+	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs">
+											
+											<a href="1.jpg"><img src="{% static 'app/images/banner.jpg' %}" alt="MainImage" ></a>
+											  
+		        							  <!-- <a href="2.jpg"><img src="{{MEDIA_URL}}{{BookGallery.book_img1.url}}" alt=""></a>
+		        							  <a href="2.jpg"><img src="{{MEDIA_URL}}{{BookGallery.book_img2.url}}" alt=""></a>
+											  <a href="2.jpg"><img src="{{MEDIA_URL}}{{BookGallery.book_img3.url}}" alt=""></a> -->
+		        							  
+		        							  
+											  
+	        							</div>
+        							</div>
+        						</div>
+        						<div class="col-lg-6 col-12">
+        							<div class="product__info__main">
+        								<h1 name="book">{{data.Book}}</h1>
+										<input type="hidden" name="book" value="{{data.Book}}">
+        								<div class="product-info-stock-sku d-flex">
+        									<p>Availability:<span>{{Product.status}}</span></p>
+											
+        									<p>Author Name :<span> {{BookDetails.Author_name}}</span></p>
+											
+        								</div>
+        								<div class="product-reviews-summary d-flex">
+        									<ul class="rating-summary d-flex">
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+        									</ul>
+        									<div class="reviews-actions d-flex">
+        										<a href="#">(1 Review)</a>
+        										<a href="#">Add Your Review</a>
+        									</div>
+        								</div>
+        								<div class="price-box">
+        									<span >{{data.Price}}</span>
+											<input type="hidden" name="price" value="{{data.Price}}">
+											
+        								</div>
+        								<div class="product-color-label">
+        									<span>Color</span>
+        									<div class="color__attribute d-flex">
+        										<div class="swatch-option color" style="background: #000000 no-repeat center; background-size: initial;"></div>
+        										<div class="swatch-option color" style="background: #8f8f8f no-repeat center; background-size: initial;"></div>
+        									</div>
+        								</div> 
+        								<div class="box-tocart d-flex">
+        									<span>Qty</span>
+											<!-- product id print -->
+											<input type="hidden" name="id" value="{{Product.id}}">
+        									<input id="qty" class="input-text qty" name="qty" min="1" value="{{data.Quantity}}" title="Qty" type="number">
+        									<div class="addtocart__actions">
+        										<button class="tocart" type="submit" title="Add to Cart">Add to Cart</button>
+        									</div>
+        								</div>
+        								<div class="product-addto-links clearfix">
+        									<a class="wishlist" href="#"></a>
+        									<a class="compare" href="#"></a>
+        									<a class="email" href="#"></a>
+        								</div>
+        								<div class="product__overview">
+        									<p>This is New Book</p>
+        									<ul class="pro__attribute">
+        										<li>• Two-tone gray heather hoodie.</li>
+        										<li>• Drawstring-adjustable hood. </li>
+        										<li>• Machine wash/dry.</li>
+        									</ul>
+        								</div>
+        							</div>
+        						</div>
+        					</div>
+        				</div>
+        				<div class="product__info__detailed">
+							<div class="pro_details_nav nav justify-content-start" role="tablist">
+	                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-details" role="tab">Details</a>
+	                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-review" role="tab">Reviews</a>
+	                        </div>
+	                        <div class="tab__container">
+	                        	<!-- Start Single Tab Content -->
+	                        	<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
+									<div class="description__attribute">
+										<p>{{BookDetails.Author_des}}</p>
+										<ul>
+											<li>• Two-tone gray heather hoodie.</li>
+											<li>• Drawstring-adjustable hood. </li>
+											<li>• Machine wash/dry.</li>
+										</ul>
+									</div>
+	                        	</div>
+	                        	<!-- End Single Tab Content -->
+							</form>
+						</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+		{% endif %}
+
+{% endblock %}

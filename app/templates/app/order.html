@@ -1,0 +1,52 @@
+{% extends "app/base.html" %}
+{% block content %}
+{% load static %}
+{% if key %}
+        <!-- cart-main-area start -->
+        <div class="cart-main-area section-padding--lg bg--white" style="margin-top: 5%;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 ol-lg-12">
+                        <form action="#">               
+                            <div class="table-content wnro__table table-responsive">
+								<div><center>
+									{% if msg %}
+									<strong><p style="color: red;">{{msg}}</p></strong>
+						
+								{% endif %}
+								</center></div>
+								<h1>Your All Orders </h1>
+                                <table>
+                                    <tr>
+
+                                        <thead>
+
+                                            <th> Order Id</th>
+                                            <th> Order Date </th>
+                                            <th> Amout </th>
+                                        </thead>
+                                        
+                                    </tr>
+                                    {% for i in key %}
+									<tbody>
+                                        <tr>
+                                        <td>{{i.order_id}}</td>
+                                        <td>{{i.made_on}}</td>
+                                        <td>{{i.amount}}/-</td>
+                                    </tr>
+                                    </tbody>
+                                {% endfor %}
+                                </table>
+								
+                            </div>
+                        </form> 
+                       
+                    </div>
+                </div>
+                
+            </div>  
+        </div>
+		
+        <!-- cart-main-area end -->
+        {% endif %}
+	{% endblock %}

@@ -1,0 +1,134 @@
+{% extends "app/seller/base1.html" %}
+{% block content %}
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fas fa-pencil-alt"></i> All Product</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SEARCH -->
+  <section id="search" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ml-auto">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Product...">
+            <div class="input-group-append">
+              <button class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>All Product </h4>
+            </div>
+            
+            <!-- Added ID for JS -->
+            {% if key %}
+            
+            <table border="2" class="table table-striped">
+              
+              <thead class="table-dark">
+                <tr>
+                  <th>Id</th>
+                  <th>BookName</th>
+                  <th>Book Status</th>
+                  <th>BookPrice</th>
+                  <th>MainImage</th>
+                  
+                  <th>Edit</th>
+                  <th>Delete</th>
+                  <th>EditImage</th>
+                  
+                </tr>
+              </thead>
+               
+                
+              {% for i in key %}
+              
+              
+              <tbody id="allPosts">
+                
+                <tr>
+                 
+                  <td>{{i.id}}</td>
+                  <td>{{i.Book_name}}</td>
+                  <td>{{i.status}}</td>
+                  <td>{{i.Book_price}}</td>
+                  <td style="width: 10%;">
+                    <img src="{{MEDIA_URL}}{{i.MainImage.url}}" alt="avatar" class="d-block img-fluid mb-3"></td>
+                  <td>
+                    <form action="{% url 'seleditpage'  pk=i.id %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="id" id="" value="{{i.id}}">
+                      <input type="submit" value="Edit Product" style="background-color:darkgoldenrod; color:white;">
+                    </form>
+                  </td>
+                  <td>
+                    <form action="{% url 'seldelete'  pk=i.id %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="id" id="" value="{{i.id}}">
+                      <input type="submit" value="Delete Product" style="background-color: red; color:white;">
+                    </form>
+                  </td>
+                  <td>
+                    <form action="{% url 'image'  pk=i.id %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="id" id="" value="{{i.id}}">
+                      <input type="submit" value="ProductImages" style="background-color:darkgoldenrod; color:white;">
+                    </form>
+                   
+                      
+                   
+                  </td>
+                  
+                  
+                  
+                </tr>
+              </tbody>
+              
+              {% endfor %}
+            </table>
+            
+            {% endif %}
+            <!-- PAGINATION -->
+            <nav class="ml-4">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a href="#" class="page-link">Previous</a>
+                </li>
+                <li class="page-item active">
+                  <a href="#" class="page-link">1</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">2</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">3</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

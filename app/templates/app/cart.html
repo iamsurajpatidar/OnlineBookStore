@@ -1,0 +1,116 @@
+﻿{% extends "app/base.html" %}
+{% block content %}
+{% load static %}
+        <!-- Start Bradcaump area -->
+        <div class="ht__bradcaump__area bg-image--3" style="background-image: url('{% static 'app/images/banner.jpg' %} ');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bradcaump__inner text-center">
+                        	<h2 class="bradcaump-title">Shopping Cart</h2>
+                            <nav class="bradcaump-content">
+                              <a class="breadcrumb_item" href="index.html">Home</a>
+                              <span class="brd-separetor">/</span>
+                              <span class="breadcrumb_item active">Shopping Cart</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <!-- cart-main-area start -->
+        <div class="cart-main-area section-padding--lg bg--white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 ol-lg-12">
+                        <form action="#">               
+                            <div class="table-content wnro__table table-responsive">
+								<div><center>
+									{% if msg %}
+									<strong><p style="color: red;">{{msg}}</p></strong>
+						
+								{% endif %}
+								</center></div>
+								{% if key %}
+                                <table>
+									
+                                    <thead>
+                                        <tr class="title-top">
+                                            <th>Id</th>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-price">Price</th>
+                                            <th class="product-quantity">Quantity</th>
+                                            <th class="product-subtotal">Total</th>
+                                            <th >Update Product</th>
+
+                                            <th >Remove To Cart</th>
+                                        </tr>
+                                    </thead>
+									{% for i in key %}
+                                    <tbody>
+                                        <tr>
+                                            <td>{{i.id}}</td>
+                                            <td class="product-name"><a href="#">{{i.Book}}</a></td>
+                                            <td class="product-price"><span class="amount">{{i.Price}}</span></td>
+                                            <td class="product-quantity">{{i.Quantity}}</td>
+                                            <td class="product-subtotal">{{i.Total}}</td>
+                                            <td class="product-name" >
+                                                <form action="{% url 'EditCartpa'  pk=i.id %}" method="post">
+                                                    {% csrf_token %}
+                                                  <input type="hidden" name="id" id="" value="{{i.id}}">
+                                                  <input type="submit" value="Edit Product" style="background-color:darkgoldenrod; color:white; width: 70%;">
+                                                </form>
+                                              </td>
+                                              <td >
+                                                <form action="{% url 'deletecart'  pk=i.id %}" method="post">
+                                                  {% csrf_token %}
+                                                  <input type="hidden" name="id" id="" value="{{i.id}}">
+                                                  <input type="submit"  value="Delete Product" style="background-color: red; color:white; width: 90%;">
+                                                </form>
+                                              </td>
+                                        </tr>
+                                        
+                                    </tbody>
+									{% endfor %}
+                                </table>
+								
+                            </div>
+                        </form> 
+                        <div class="cartbox__btn">
+                            <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
+                                <li><a href="#">Coupon Code</a></li>
+                                <li><a href="#">Apply Code</a></li>
+                                <li><a href="#">Update Cart</a></li>
+                                <li><a href="{% url 'checkout' %}">Check Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-6">
+                        <div class="cartbox__total__area">
+                            <div class="cartbox-total d-flex justify-content-between">
+                               {% if subtotal %}
+								<ul class="cart__total__list">
+                                    <li>Cart total</li>
+                                    <li>Sub Total</li>
+                                </ul>
+                                <ul class="cart__total__tk">
+                                    <li>{{subtotal}}</li>
+                                    <li>{{subtotal}}</li>
+                                </ul>
+                            </div>
+                            <div class="cart__total__amount">
+                                <span>Grand Total</span>
+                                <span>{{subtotal}}/- Rs</span>
+                            </div>
+							{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+		{% endif %}
+        <!-- cart-main-area end -->
+		{% endblock %}

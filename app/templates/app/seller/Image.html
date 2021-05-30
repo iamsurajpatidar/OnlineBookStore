@@ -1,0 +1,117 @@
+{% extends "app/seller/base1.html" %}
+{% block content %}
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fas fa-pencil-alt"></i> Image</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SEARCH -->
+  <section id="search" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ml-auto">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Product...">
+            <div class="input-group-append">
+              <button class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Image </h4>
+            </div>
+            
+            <!-- Added ID for JS -->
+            {% if cat %}
+            
+            <table border="2" class="table table-striped" >
+              
+              <thead class="table-dark">
+                <tr>
+                  <th>Id</th>
+                  <th>Image1</th>
+                  <th>Image2</th>
+                  <th>Image3</th>
+                  
+                  <th>Edit</th>
+                  
+                 
+                  
+                </tr>
+              </thead>
+               
+                
+              {% for i in cat %}
+              
+              
+              <tbody id="allPosts">
+                
+                <tr>
+                 <td style="width: 3%;"><center>{{i.id}}</center></td>
+                  <td style="width: 10%; height: 5%;"><img src="{{MEDIA_URL}}{{i.book_img1.url}}" alt="avatar" class="d-block img-fluid mb-3"></td>
+                  <td style="width: 10%; height: 5%;"><img src="{{MEDIA_URL}}{{i.book_img2.url}}" alt="avatar" class="d-block img-fluid mb-3"></td>
+                  <td style="width: 10%; height: 5%;"><img src="{{MEDIA_URL}}{{i.book_img3.url}}" alt="avatar" class="d-block img-fluid mb-3"></td>
+                
+                  <td style="width: 3%;">
+                    <center>                    
+                      <form action="{% url 'editimage'  pk=i.id %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="id" id="" value="">
+                      <input type="submit" value="EditImage" style="background-color:darkgoldenrod; color:white;">
+                    </form></center>
+
+                  </td>
+                  
+                  
+                  
+                  
+                </tr>
+              </tbody>
+              
+              {% endfor %}
+            </table>
+            
+            {% endif %}
+            <!-- PAGINATION -->
+            <nav class="ml-4">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a href="#" class="page-link">Previous</a>
+                </li>
+                <li class="page-item active">
+                  <a href="#" class="page-link">1</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">2</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">3</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

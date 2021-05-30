@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"
+    integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9" crossorigin="anonymous" />
+  <title>Admin Panel</title>
+</head>
+
+<body style="background-color:lightgrey;">
+    
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+    
+      <a href="{% url 'Customerindex' %}" class="navbar-brand"><h3>Customer Panel</h3></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"><span
+          class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item px-2">
+            <a href="{% url 'Customerindex' %}" class="nav-link active"><h5>Dashboard</h5></a>
+          </li> -->
+          <li class="nav-item px-2">
+            <a href="{% url 'allshow' %}" class="nav-link active"><h5>Continue Shoping</h5></a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="{% url 'showallcart' %}" class="nav-link active "><h5>Cart Product</h5> </a>
+          </li>
+          <!-- <li class="nav-item px-2">
+            <a href="users.html" class="nav-link">Users</a>
+          </li> -->
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown mr-3">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <i class="fas fa-user"></i> Welcome {{ request.session.Firstname}}
+            </a>
+            <div class="dropdown-menu">
+              <a href="{% url 'custprofilepage' pk=request.session.id %}" class="dropdown-item">
+                <i class="fas fa-user-circle"></i> Profile
+              </a>
+              <a href="settings.html" class="dropdown-item">
+                <i class="fas fa-cog"></i> Settings
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'BuyerLogout' %}" class="nav-link">
+              <i class="fas fa-user-times"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  {% block content %}
+
+  {% endblock %}
+  
+
+    <!-- FOOTER -->
+    <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <p class="lead text-center">
+                Copyright &copy; <span id="year"></span>
+                Customer Panel / Developer : Suraj Patidar
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    
+      <!-- MODALS -->
+    
+      <!-- ADD POST MODAL -->
+      
+    
+    
+      <!-- ADD CATEGORY MODAL
+      <div class="modal fade" id="addCategoryModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+              <h5 class="modal-title">Add Category</h5>
+              <button class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     -->
+      <!-- ADD USER MODAL
+      <div class="modal fade" id="addUserModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-warning text-white">
+              <h5 class="modal-title">Add User</h5>
+              <button class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password2">Confirm Password</label>
+                  <input type="password" class="form-control">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-warning" data-dismiss="modal">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    
+    
+    
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+      <!-- WYSWYG Editor -->
+      <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    
+      <script>
+        // Get the current year for the copyright
+        $('#year').text(new Date().getFullYear());
+        // Modal Editor
+        CKEDITOR.replace('editor1');
+      </script>
+      <!-- Local JS -->
+      <script src="js/app.js"></script>
+    </body>
+    
+    </html>
